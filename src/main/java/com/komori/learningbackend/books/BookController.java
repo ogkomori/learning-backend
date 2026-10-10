@@ -1,11 +1,8 @@
 package com.komori.learningbackend.books;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -14,16 +11,20 @@ public class BookController {
 	private final BookService bookService;
 
 	@GetMapping
-	public ResponseEntity<?> getAllBooks(
+	public ResponseEntity<BookSearchResponse> getAllBooks(
 			@RequestParam(required = false) Integer page,
-			@RequestParam(required = false) Integer size) {
-		if (page == null && size == null) {
-            List<BookEntity> bookEntities = bookService.findAll();
-			return ResponseEntity.ok(bookEntities);
-		}
+			@RequestParam(required = false) Integer size,
+			@RequestParam(required = false) String query,
+			@RequestParam(required = false) String category,
+			@RequestParam(required = false) String sort,
+			@RequestParam(required = false) String direction
+	) {
+		BookSearchResponse response = bookService.findByParameters(
+				page, size, query, category, sort, direction
+		);
 
-		Page<BookEntity> bookPage = bookService.findByPage(page, size);
-		return ResponseEntity.ok(bookPage);
+		System.out.println(response.getClass().getName());
+		return ResponseEntity.ok(response);
 	}
 
 	@GetMapping("/{id}")
