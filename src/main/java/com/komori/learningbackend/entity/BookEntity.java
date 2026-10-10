@@ -1,4 +1,4 @@
-package com.komori.learningbackend.books;
+package com.komori.learningbackend.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

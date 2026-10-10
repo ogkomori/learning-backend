@@ -1,5 +1,6 @@
-package com.komori.learningbackend.books;
+package com.komori.learningbackend.repository;
 
+import com.komori.learningbackend.entity.BookEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 public class BookSpecifications {

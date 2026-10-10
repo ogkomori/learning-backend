@@ -1,5 +1,9 @@
-package com.komori.learningbackend.books;
+package com.komori.learningbackend.service;
 
+import com.komori.learningbackend.entity.BookEntity;
+import com.komori.learningbackend.repository.BookRepository;
+import com.komori.learningbackend.dto.BookSearchResponse;
+import com.komori.learningbackend.repository.BookSpecifications;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,4 +1,6 @@
-package com.komori.learningbackend.books;
+package com.komori.learningbackend.dto;
+
+import com.komori.learningbackend.entity.BookEntity;
 
 import java.util.List;
 
@@ -8,6 +10,4 @@ public record BookSearchResponse(
         Integer size,
         Long totalElements,
         Integer totalPages
-)
-
-{}
+) {}
