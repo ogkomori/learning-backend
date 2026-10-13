@@ -1,10 +1,7 @@
 package com.komori.learningbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.komori.learningbackend.dto.request.CreateBookRequest;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +21,16 @@ public class BookEntity {
 	private Long id;
 	private String title;
 	private String author;
+	@Column(unique = true)
 	private String isbn;
 	private LocalDate publishedDate;
 	private String category;
+
+	public BookEntity(CreateBookRequest createBookRequest) {
+		this.title = createBookRequest.title();
+		this.author = createBookRequest.author();
+		this.isbn = createBookRequest.isbn();
+		this.publishedDate = createBookRequest.publishedDate();
+		this.category = createBookRequest.category();
+	}
 }
